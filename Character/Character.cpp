@@ -1,29 +1,53 @@
 ﻿#include "Character.h"
 
-ACharacter::ACharacter()
+// [과제 2] 생성자 구현하기
+ACharacter::ACharacter(string NewName, int NewHp, int NewAtk)
 {
-    Name = "UnKnown";
+    // 입력받은(New~) 값들을 내 멤버 변수(Name, Hp, Atk)에 저장합니다.
+    Name = NewName;
+    Hp = NewHp;
+    Atk = NewAtk;
 
-    Hp = 100;
-    Atk = 10;
-
-
-    cout << "ACharacter 생성됨: " << Name << " (HP: " << Hp << ")" << endl;
+    cout << "[생성] " << Name << "가 전장에 나타났습니다! (HP: " << Hp << ")" << endl;
 }
-
 ACharacter::~ACharacter()
 {
     cout << "ACharacter 소멸됨" << endl;
 }
 
-void ACharacter::Attack()
+// 1-2. Attack() 함수 내부에서는
+// 몬스터가 데미지를 입음 (TakeDamage 호출)
+void ACharacter::Attack(ACharacter* Target)
 {
-    cout << Name << "가 공격 합니다!" << "공격력 :"; Atk;
+    cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << Atk << endl;
+    Target->TakeDamage(Atk);
 
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
     Hp -= DamageAmount;
-    cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << endl;
+    cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << "Hp :" << Hp << endl;
+}
+
+string ACharacter::GetName()
+{
+    return Name;
+}
+
+int ACharacter::GetHp()
+{
+    return Hp;
+}
+
+bool ACharacter::IsDead()
+{
+    if (Hp <=0) 
+    {
+        return true;
+    } 
+    else
+    {
+        return false;
+    }
 }
