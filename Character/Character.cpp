@@ -1,7 +1,7 @@
 ﻿#include "Character.h"
 
 // [과제 2] 생성자 구현하기
-ACharacter::ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, int NewCritical)
+ACharacter::ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, float NewCritical)
 {
     // 입력받은(New~) 값들을 내 멤버 변수(Name, Hp, Atk)에 저장합니다.
     Name = NewName;
@@ -21,13 +21,36 @@ ACharacter::~ACharacter()
 // 몬스터가 데미지를 입음 (TakeDamage 호출)
 void ACharacter::Attack(ACharacter* Target)
 {
-    cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << Atk << endl;
-    Target->TakeDamage(Atk);
+    if (Target == nullptr) return;
+
+    int damage = Atk;
+    bool isCritical = (rand() % 100) < Critical;
+
+    if (isCritical)
+    {
+
+        damage = static_cast<int>(Atk * 1.5f);  // 크리티컬 배율
+        cout << Name << "가 " << Target->GetName() << "을(를) 크리티컬 공격합니다! 공격력: " << damage << endl;
+        Target->TakeDamage(damage);
+    }
+    else
+    {
+        cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << Atk << endl;
+        Target->TakeDamage(Atk);
+    }
 
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
+    if (Def >= DamageAmount)
+    {
+        DamageAmount = 0;
+    }
+    else
+    {
+        DamageAmount -= Def;
+    }
     Hp -= DamageAmount;
     cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << "Hp :" << Hp << endl;
 }
