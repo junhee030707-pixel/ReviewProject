@@ -1,12 +1,14 @@
 ﻿#include "Character.h"
 
 // [과제 2] 생성자 구현하기
-ACharacter::ACharacter(string NewName, int NewHp, int NewAtk)
+ACharacter::ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, int NewCritical)
 {
     // 입력받은(New~) 값들을 내 멤버 변수(Name, Hp, Atk)에 저장합니다.
     Name = NewName;
     Hp = NewHp;
     Atk = NewAtk;
+    Def = NewDef;
+    Critical = NewCritical;
 
     cout << "[생성] " << Name << "가 전장에 나타났습니다! (HP: " << Hp << ")" << endl;
 }

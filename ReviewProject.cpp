@@ -5,8 +5,8 @@
 int main()
 {
     // 1. 캐릭터 생성 (이름, 체력, 공격력 자유 설정)
-    ACharacter* Player = new ACharacter("나의 용사", 200, 15);
-    ACharacter* Monster = new ACharacter("무서운 오크", 100, 10);
+    ACharacter* Player = new ACharacter("나의 용사", 200, 15, 10, 5);
+    ACharacter* Monster = new ACharacter("무서운 오크", 100, 10, 5, 1);
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
