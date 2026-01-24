@@ -17,10 +17,13 @@ ACharacter::~ACharacter()
     cout << "ACharacter 소멸됨" << endl;
 }
 
+//주석 제거 합시다.
+
 // 1-2. Attack() 함수 내부에서는
 // 몬스터가 데미지를 입음 (TakeDamage 호출)
 void ACharacter::Attack(ACharacter* Target)
 {
+    // { } 중괄호 제거
     if (Target == nullptr) return;
 
     int damage = Atk;
@@ -38,7 +41,8 @@ void ACharacter::Attack(ACharacter* Target)
         cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << Atk << endl;
         Target->TakeDamage(Atk);
     }
-
+    
+    //TakeDamage if else 밖에서 한번만 호출해서 정리 가능.
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
