@@ -8,8 +8,5 @@ using namespace std;
 class AMonster : public ACharacter
 {
 public :
-	AMonster(const string& Name, const FUnitStat& Stat) 
-		: ACharacter(Name, Stat)
-	{
-	}
+	AMonster(const string& Name, const FUnitStat& Stat);
 };

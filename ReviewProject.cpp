@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <ctime>
 #include "Character/Character.h"
+#include "Character/Monster.h"
+#include "Character/Player.h"
 
 int main()
 {
@@ -10,8 +12,9 @@ int main()
     FUnitStat PlayerStat{ 200, 15, 10, 10 };
     FUnitStat MonsterStat{ 100, 10, 5, 10 };
 
-    ACharacter* Player = new ACharacter("나의 용사", PlayerStat);
-    ACharacter* Monster = new ACharacter("무서운 오크", MonsterStat);
+    //객채는 플레이어, 몬스터지만 :: 부모클래스ACharacter의 포인터로 사용한다.
+    ACharacter* Player = new APlayer("나의 용사", PlayerStat);
+    ACharacter* Monster = new AMonster("무서운 오크", MonsterStat);
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
