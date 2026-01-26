@@ -17,8 +17,6 @@ ACharacter::~ACharacter()
     cout << "ACharacter 소멸됨" << endl;
 }
 
-// 1-2. Attack() 함수 내부에서는
-// 몬스터가 데미지를 입음 (TakeDamage 호출)
 void ACharacter::Attack(ACharacter* Target)
 {
     if (Target == nullptr) return;
