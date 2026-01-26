@@ -1,32 +1,33 @@
 ﻿// 파일명: Character.h
 #pragma once
 #include <iostream>
-#include <string> // 문자열(이름)을 쓰기 위해 필요합니다.
+#include <string> 
 
 using namespace std;
+
+struct FUnitStat
+{
+    int Hp;
+    int Atk;
+    int Def;
+    int Critical;
+};
 
 class ACharacter
 {
 public:
-    ACharacter();
+    ACharacter(string NewName, const FUnitStat& NewStat);
     ~ACharacter();
-
-    // [과제 1] 값을 받는 생성자 선언하기
-   // 이름, 체력, 공격력을 입력받아서 생성합니다.
-    ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, float NewCritical);
-
 protected:
     string Name;
-    int Hp;
-    int Atk;
-    int Def;
-    float Critical;
+    FUnitStat Stat;
 
 public:
     void Attack(ACharacter* Target);
     void TakeDamage(int DamageAmount);
-    int GetHp();
-    string GetName();
     bool IsDead();
+
+    string GetName() const { return Name; };
+    int GetHp() const { return Stat.Hp; };
 
 };
