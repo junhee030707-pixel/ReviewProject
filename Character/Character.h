@@ -13,13 +13,6 @@ struct FUnitStat
     int Critical;
 };
 
-// Player Class <- 캐릭터 상속 
-// 멤버 변수: Level, Exp
-// 멤버 함수: LevelUp(), UseItem()
-
-// Monster Class <- 캐릭터 상속
-// 멤버 - 별도로 추가할 건 없음.
-
 class ACharacter
 {
 public:
