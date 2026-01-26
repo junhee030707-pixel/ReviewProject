@@ -5,17 +5,22 @@
 
 using namespace std;
 
-class ACharacter
+struct FUnitStat
 {
-public:
-    ACharacter(string NewName, int NewHp, int NewAtk, int NewDef, float NewCritical);
-    ~ACharacter();
-protected:
-    string Name;
     int Hp;
     int Atk;
     int Def;
-    float Critical;
+    int Critical;
+};
+
+class ACharacter
+{
+public:
+    ACharacter(string NewName, const FUnitStat& NewStat);
+    ~ACharacter();
+protected:
+    string Name;
+    FUnitStat Stat;
 
 public:
     void Attack(ACharacter* Target);
@@ -23,6 +28,6 @@ public:
     bool IsDead();
 
     string GetName() const { return Name; };
-    int GetHp() const { return Hp; };
+    int GetHp() const { return Stat.Hp; };
 
 };
