@@ -1,12 +1,13 @@
 ﻿#include "Character.h"
 
-ACharacter::ACharacter(string NewName, const FUnitStat& NewStat)
+ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 {
     Name = NewName;
     Stat = NewStat;
 
     cout << "[생성] " << Name << "가 전장에 나타났습니다! (HP: " << Stat.Hp << ")" << endl;
 }
+
 ACharacter::~ACharacter()
 {
     cout << "ACharacter 소멸됨" << endl;
@@ -14,47 +15,33 @@ ACharacter::~ACharacter()
 
 void ACharacter::Attack(ACharacter* Target)
 {
-    if (Target == nullptr) return;
-
-    int damage = Stat.Atk;
-    bool isCritical = (rand() % 100) < Stat.Critical;
-
-    if (isCritical)
+    if (Target == nullptr)
     {
+        return;
+    }
 
-        damage = static_cast<int>(Stat.Atk * 1.5f);  // 크리티컬 배율
-        cout << Name << "가 " << Target->GetName() << "을(를) 크리티컬 공격합니다! 공격력: " << damage << endl;
+    int Damage = Stat.Atk;
+    bool bCritical = (rand() % 100) < Stat.Critical;
+    if (bCritical)
+    {
+        Damage = static_cast<int>(Stat.Atk * 1.5f); 
+        cout << Name << "가 " << Target->GetName() << "을(를) 크리티컬 공격합니다! 공격력: " << Damage << endl;
     }
     else
     {
-        cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << damage << endl;
+        cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << Damage << endl;
     }
 
-    Target->TakeDamage(damage);
+    Target->TakeDamage(Damage);
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
-    if (Stat.Def >= DamageAmount)
-    {
-        DamageAmount = 0;
-    }
-    else
-    {
-        DamageAmount -= Stat.Def;
-    }
+    DamageAmount -= Stat.Def;
+    //ex) DamageAmount 가 0보다 작으면, 0반환
+    //ex) DamageAmount가 0보다 크면 DamageAmount 반환.
+    DamageAmount = std::max(DamageAmount, 0);
+    
     Stat.Hp -= DamageAmount;
     cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << "Hp :" << Stat.Hp << endl;
-}
-
-bool ACharacter::IsDead()
-{
-    if (Stat.Hp <= 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
 }

@@ -7,8 +7,8 @@ int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    FUnitStat PlayerStat{ 200, 15, 10, 10.0f };
-    FUnitStat MonsterStat{ 100, 10, 5, 10.0f };
+    FUnitStat PlayerStat{ 200, 15, 10, 10 };
+    FUnitStat MonsterStat{ 100, 10, 5, 10 };
 
     ACharacter* Player = new ACharacter("나의 용사", PlayerStat);
     ACharacter* Monster = new ACharacter("무서운 오크", MonsterStat);
