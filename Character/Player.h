@@ -7,7 +7,7 @@ class APlayer : public ACharacter
 {
 public :
 	APlayer(const string& Name, const FUnitStat& Stat);
-	virtual void Attack(ACharacter* Target) override;
+	virtual FDamageResult Attack(ACharacter* Target) override;
 	void LevelUp();
 	void UseItem();
 	

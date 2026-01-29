@@ -9,5 +9,5 @@ class AMonster : public ACharacter
 {
 public :
 	AMonster(const string& Name, const FUnitStat& Stat);
-	virtual void Attack(ACharacter* Target) override;
+	virtual FDamageResult Attack(ACharacter* Target) override;
 };
