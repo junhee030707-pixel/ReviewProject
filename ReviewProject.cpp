@@ -9,12 +9,9 @@ int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
 
-    FUnitStat PlayerStat{ 200, 15, 10, 10 };
-    FUnitStat MonsterStat{ 100, 10, 5, 10 };
-
     //객채는 플레이어, 몬스터지만 :: 부모클래스ACharacter의 포인터로 사용한다.
-    ACharacter* Player = new APlayer("나의 용사", PlayerStat);
-    ACharacter* Monster = new AMonster("무서운 오크", MonsterStat);
+    ACharacter* Player = new APlayer("나의 용사", FUnitStat(200, 50, 30, 5, 10));
+    ACharacter* Monster = new AMonster("무서운 오크", FUnitStat(100, 30, 20, 3, 10));
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
