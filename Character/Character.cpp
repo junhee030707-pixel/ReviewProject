@@ -23,11 +23,6 @@ void ACharacter::Attack(ACharacter* Target)
     if (bCritical)
     {
         Damage = static_cast<int>(Stat.Atk * 1.5f); 
-        cout << Name << "가 " << Target->GetName() << "을(를) 크리티컬 공격합니다! 공격력: " << Damage << endl;
-    }
-    else
-    {
-        cout << Name << "가 " << Target->GetName() << "을(를) 공격합니다! 공격력: " << Damage << endl;
     }
 
     Target->TakeDamage(Damage);

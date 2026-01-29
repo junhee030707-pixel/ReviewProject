@@ -9,7 +9,7 @@ AMonster::AMonster(const string& Name, const FUnitStat& Stat)
 
 void AMonster::Attack(ACharacter* Target)
 {
-    cout <<  Name << "이 공격합니다" << endl;
-    Target->TakeDamage(Stat.Atk);
+    cout << Name << "이(가) 나의 용사(을)를 공격합니다" << endl;
+    ACharacter::Attack(Target);
 }
 
