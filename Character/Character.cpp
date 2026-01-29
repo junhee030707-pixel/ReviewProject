@@ -16,10 +16,8 @@ ACharacter::~ACharacter()
 void ACharacter::Attack(ACharacter* Target)
 {
     if (Target == nullptr)
-    {
         return;
-    }
-
+    
     int Damage = Stat.Atk;
     bool bCritical = (rand() % 100) < Stat.Critical;
     if (bCritical)
