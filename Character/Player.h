@@ -10,6 +10,7 @@ public :
 	virtual FDamageResult Attack(ACharacter* Target) override;
 	void LevelUp();
 	void UseItem();
+	void UseSkill(ACharacter* Target) override;
 	
 protected:
 	int Level;

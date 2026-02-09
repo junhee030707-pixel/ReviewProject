@@ -47,3 +47,44 @@ int ACharacter::TakeDamage(int DamageAmount)
     
     return DamageAmount;
 }
+
+void ACharacter::PrintName()
+{
+    cout << "[" << Name << "] ";
+}
+void FDamageResult::PrintMessage(const string& AttackMessage)
+{
+    cout << "-------------------------------------------------" << endl;
+    Attacker->PrintName();
+    cout << AttackMessage << '\n';
+
+    Target->PrintName();
+    cout << "'받은 데미지': " << Damage << "-> '남은 HP': " << Target->GetHp() << endl;
+    cout << "-------------------------------------------------" << endl;
+}
+
+void ACharacter::DoAction(ACharacter* Target)
+{
+    const int AttackRate = 70; // 70% 기본공격 
+    const int SkillCost = 2;
+
+    int Roll = rand() % 100;       // 0 ~ 99
+
+    if (Roll < AttackRate)
+    {
+        Attack(Target);
+        return;
+    }
+
+
+    if (Manga >= SkillCost)
+    {
+        Manga -= SkillCost;        
+        UseSkill(Target);          
+    }
+    else
+    {
+        Attack(Target);
+    }
+}
+

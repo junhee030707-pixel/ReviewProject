@@ -17,6 +17,20 @@ void APlayer::UseItem()
     
 }
 
+void APlayer::UseSkill(ACharacter* Target)
+{
+    Stat.Mp -= 10;
+
+
+    int ActualDamage = Target->TakeDamage(Stat.Atk * 2);
+    FDamageResult Result;
+    Result.Attacker = this;
+    Result.Target = Target;
+    Result.bCritical = false;
+    Result.Damage = ActualDamage;
+    Result.PrintMessage("스킬발동: 회심의 일격...!");
+}
+
 FDamageResult APlayer::Attack(ACharacter* Target)
 {
     FDamageResult result = ACharacter::Attack(Target);

@@ -4,6 +4,7 @@
 #include <string> 
 
 using namespace std;
+class ACharacter;
 
 struct FUnitStat
 {
@@ -30,6 +31,9 @@ struct FUnitStat
 
 struct FDamageResult
 {
+    ACharacter* Attacker;
+    ACharacter* Target;
+    void PrintMessage(const std::string& AttackMessage);
     bool bCritical;
     int Damage;
 };
@@ -43,10 +47,15 @@ public:
 protected:
     string Name;
     FUnitStat Stat;
+    int Manga = 0;        // 현재 만화
+    const int MaxManga = 10; 
+    virtual void UseSkill(ACharacter* Target) = 0;                            // 최대 만화
 
 public:
     virtual FDamageResult Attack(ACharacter* Target);
     int TakeDamage(int DamageAmount);
+    void PrintName();
+    void DoAction(ACharacter* Target);
     
     bool IsDead() { return Stat.Hp <= 0; }
     string GetName() const { return Name; }
