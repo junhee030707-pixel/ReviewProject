@@ -47,8 +47,6 @@ public:
 protected:
     string Name;
     FUnitStat Stat;
-    int Manga = 0;        // 현재 만화
-    const int MaxManga = 10; 
     virtual void UseSkill(ACharacter* Target) = 0;                            // 최대 만화
 
 public:

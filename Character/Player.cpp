@@ -19,9 +19,6 @@ void APlayer::UseItem()
 
 void APlayer::UseSkill(ACharacter* Target)
 {
-    Stat.Mp -= 10;
-
-
     int ActualDamage = Target->TakeDamage(Stat.Atk * 2);
     FDamageResult Result;
     Result.Attacker = this;

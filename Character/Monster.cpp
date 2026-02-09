@@ -23,8 +23,6 @@ FDamageResult AMonster::Attack(ACharacter* Target)
 
 void AMonster::UseSkill(ACharacter* Target)
 {
-    Stat.Mp -= 10;
-
     int ActualDamage = Target->TakeDamage(Stat.Atk * 2);
     FDamageResult Result;
     Result.Attacker = this;
@@ -32,5 +30,16 @@ void AMonster::UseSkill(ACharacter* Target)
     Result.bCritical = false;
     Result.Damage = ActualDamage;
     Result.PrintMessage("스킬발동: 파이얼 인더 헐...!");
+    Heal(ActualDamage);
+}
+
+void AMonster::Heal(int DamageAmount)
+{
+    int PrevHp = Stat.Hp;
+    Stat.Hp += DamageAmount;
+    Stat.Hp = min(Stat.Hp, Stat.MaxHp);
+    int ActualHeal = Stat.Hp - PrevHp; //힐 한 후 Hp - 힐 전 Hp  
+    PrintName();
+    cout << ActualHeal << "Hp를 회복했다" << endl;
 }
 

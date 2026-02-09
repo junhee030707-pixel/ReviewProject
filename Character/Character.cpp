@@ -77,14 +77,14 @@ void ACharacter::DoAction(ACharacter* Target)
     }
 
 
-    if (Manga >= SkillCost)
-    {
-        Manga -= SkillCost;        
-        UseSkill(Target);          
-    }
-    else
+    if (Stat.Mp < SkillCost)
     {
         Attack(Target);
+        return;
     }
+    
+    Stat.Mp -= SkillCost;
+    UseSkill(Target);
+    //Stat.Mp++;
 }
 

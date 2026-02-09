@@ -12,4 +12,5 @@ public :
 	virtual FDamageResult Attack(ACharacter* Target) override;
 
 	void UseSkill(ACharacter* Target) override;
+	void Heal(int DamageAmount);
 };
