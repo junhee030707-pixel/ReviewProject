@@ -5,6 +5,11 @@
 #include "Character/Monster.h"
 #include "Character/Player.h"
 
+void  WaitForPlayerInput()
+{
+    system("pause");
+    cout << endl;
+}
 int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -14,7 +19,7 @@ int main()
     ACharacter* Monster = new AMonster("무서운 오크", FUnitStat(100, 30, 20, 3, 10));
 
     cout << "===  데스매치 시작!  ===" << endl;
-    Sleep(1000);
+    WaitForPlayerInput();
 
     while (!Player->IsDead() && !Monster->IsDead())
     {
@@ -25,8 +30,8 @@ int main()
             cout << "몬스터가 쓰러졌습니다! 승리!" << endl;
             break;
         }
+        WaitForPlayerInput();
 
-        Sleep(500);
 
         Monster->Attack(Player);
         if (Player->IsDead())
@@ -34,11 +39,13 @@ int main()
             cout << "플레이어가 쓰러졌습니다... 패배..." << endl;
             break;
         }
+        WaitForPlayerInput();
 
-        Sleep(1000);
     }
 
     delete Player;
     delete Monster;
+
+    WaitForPlayerInput();
     return 0;
 }
