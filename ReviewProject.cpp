@@ -5,24 +5,42 @@
 #include "Character/Monster.h"
 #include "Character/Player.h"
 
-void  WaitForPlayerInput()
+class BattleManager
 {
-    system("pause");
-    cout << endl;
-}
+    //함수 종류
 
-bool BattleTurn(ACharacter* Attacker, ACharacter* Defender)
-{
-    Attacker->DoAction(Defender);
-    Attacker->ShowStat();
-    Defender->ShowStat();
-    WaitForPlayerInput();
-
-    while (Defender->IsDead()) 
+    void  WaitForPlayerInput()
     {
-        return true;
+        system("pause");
+        cout << endl;
     }
-}
+
+    bool BattleTurn(ACharacter* Attacker, ACharacter* Defender)
+    {
+        Attacker->DoAction(Defender);
+        Attacker->ShowStat();
+        Defender->ShowStat();
+        WaitForPlayerInput();
+
+        while (Defender->IsDead())
+        {
+            return true;
+        }
+    }
+
+    void RunBattle() 
+    {
+        BattleTurn();
+    }
+
+    //RunBattle() // 런 배틀 안에선 배틀턴이랑 WaitForPlayerInput이 내부에서 
+    // main()문 내용처럼 호출된다~~~
+    //RunBattle() 함수의 파라미터는 고민해보세요.
+
+    //BattleTurn
+    //WaitForPlayerInput
+};
+
 int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
