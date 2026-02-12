@@ -10,6 +10,18 @@ void  WaitForPlayerInput()
     system("pause");
     cout << endl;
 }
+
+bool BattleTurn(ACharacter* Attacker, ACharacter* Defender)
+{
+    Attacker->DoAction(Defender);
+    WaitForPlayerInput();
+
+    while (Defender->IsDead()) 
+    {
+        return true;
+    }
+    return false;
+}
 int main()
 {
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -21,26 +33,19 @@ int main()
     cout << "===  데스매치 시작!  ===" << endl;
     WaitForPlayerInput();
 
-    while (!Player->IsDead() && !Monster->IsDead())
+    while (true)
     {
-        Player->DoAction(Monster);
-
-        if (Monster->IsDead())
+        // 1. 플레이어의 턴 (게임 끝났으면 break)
+        if (BattleTurn(Player, Monster) == true)
         {
-            cout << "몬스터가 쓰러졌습니다! 승리!" << endl;
             break;
         }
-        WaitForPlayerInput();
 
-
-        Monster->DoAction(Player);
-        if (Player->IsDead())
+        // 2. 몬스터의 턴 (게임 끝났으면 break)
+        if (BattleTurn(Monster, Player) == true)
         {
-            cout << "플레이어가 쓰러졌습니다... 패배..." << endl;
             break;
         }
-        WaitForPlayerInput();
-
     }
 
     delete Player;
