@@ -14,13 +14,14 @@ void  WaitForPlayerInput()
 bool BattleTurn(ACharacter* Attacker, ACharacter* Defender)
 {
     Attacker->DoAction(Defender);
+    Attacker->ShowStat();
+    Defender->ShowStat();
     WaitForPlayerInput();
 
     while (Defender->IsDead()) 
     {
         return true;
     }
-    return false;
 }
 int main()
 {

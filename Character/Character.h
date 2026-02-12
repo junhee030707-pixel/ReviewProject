@@ -21,7 +21,7 @@ struct FUnitStat
     {}
     FUnitStat(int MaxHp, int MaxMp, int Atk, int Def, int Critical)
     {
-        this->MaxHp = MaxHp;
+        this->MaxHp = MaxHp; 
         this->MaxMp = MaxMp;
         this->Atk = Atk;
         this->Def = Def;
@@ -54,7 +54,8 @@ public:
     int TakeDamage(int DamageAmount);
     void PrintName();
     void DoAction(ACharacter* Target);
-    
+    void ShowStat();
+
     bool IsDead() { return Stat.Hp <= 0; }
     string GetName() const { return Name; }
     int GetHp() const { return Stat.Hp; }

@@ -63,6 +63,11 @@ void FDamageResult::PrintMessage(const string& AttackMessage)
     cout << "-------------------------------------------------" << endl;
 }
 
+void ACharacter::ShowStat()
+{
+    PrintName();
+    cout << "HP: " << Stat.Hp <<  " / " << Stat.MaxHp << " " "|" << " " "MP: " << Stat.Mp << "/" << Stat.MaxMp << endl;
+}
 void ACharacter::DoAction(ACharacter* Target)
 {
     const int AttackRate = 70; // 70% 기본공격 
