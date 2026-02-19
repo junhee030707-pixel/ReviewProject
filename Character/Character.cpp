@@ -70,26 +70,13 @@ void ACharacter::ShowStat()
 }
 void ACharacter::DoAction(ACharacter* Target)
 {
-    const int AttackRate = 70; // 70% 기본공격 
-    const int SkillCost = 2;
-
-    int Roll = rand() % 100;       // 0 ~ 99
-
-    if (Roll < AttackRate)
+    if (rand() % 100 <= 50) 
     {
-        Attack(Target);
-        return;
+		Attack(Target);
     }
-
-
-    if (Stat.Mp < SkillCost)
+    else 
     {
-        Attack(Target);
-        return;
-    }
-    
-    Stat.Mp -= SkillCost;
-    UseSkill(Target);
-    //Stat.Mp++;
+        UseSkill(Target);
+	}
 }
 
