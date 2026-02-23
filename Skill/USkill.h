@@ -2,13 +2,13 @@
 
 class ACharacter;
 
-class UseSkill
+class USkill
 {
 public:
-	UseSkill(ACharacter* Owner) : Owner(Owner) 
+	USkill(ACharacter* Owner) : Owner(Owner) 
 	{
 	}
-	virtual ~UseSkill(){}
+	virtual ~USkill(){}
 	virtual void Play(ACharacter* Target) = 0;
 	
 

@@ -80,3 +80,12 @@ void ACharacter::DoAction(ACharacter* Target)
 	}
 }
 
+void ACharacter::Heal(int DamageAmount)
+{
+    int PrevHp = Stat.Hp;
+    Stat.Hp += DamageAmount;
+    Stat.Hp = min(Stat.Hp, Stat.MaxHp);
+    int ActualHeal = Stat.Hp - PrevHp; //힐 한 후 Hp - 힐 전 Hp  
+    PrintName();
+    cout << ActualHeal << "Hp를 회복했다" << endl;
+}

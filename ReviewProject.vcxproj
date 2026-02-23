@@ -128,14 +128,22 @@
     <ClCompile Include="Character\Monster.cpp" />
     <ClCompile Include="Character\Player.cpp" />
     <ClCompile Include="ReviewProject.cpp" />
-    <ClCompile Include="Skill\UseSkill.cpp" />
+    <ClCompile Include="Skill\UMonsterAttackSkill.cpp" />
+    <ClCompile Include="Skill\UMonsterDrainSkill.cpp" />
+    <ClCompile Include="Skill\UPlayerAttackSkill.cpp" />
+    <ClCompile Include="Skill\UPlayerStrikeSkill.cpp" />
+    <ClCompile Include="Skill\USkill.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character\ABattleManager.h" />
     <ClInclude Include="Character\Character.h" />
     <ClInclude Include="Character\Monster.h" />
     <ClInclude Include="Character\Player.h" />
-    <ClInclude Include="Skill\UseSkill.h" />
+    <ClInclude Include="Skill\UMonsterAttackSkill.h" />
+    <ClInclude Include="Skill\UMonsterDrainSkill.h" />
+    <ClInclude Include="Skill\UPlayerAttackSkill.h" />
+    <ClInclude Include="Skill\UPlayerStrikeSkill.h" />
+    <ClInclude Include="Skill\USkill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

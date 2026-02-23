@@ -47,7 +47,8 @@ public:
 protected:
     string Name;
     FUnitStat Stat;
-    virtual void UseSkill(ACharacter* Target) = 0;                            // 최대 만화
+    virtual void UseSkill(ACharacter* Target) = 0; // 최대 만화
+    void Heal(int DamageAmount);
 
 public:
     virtual FDamageResult Attack(ACharacter* Target);
@@ -59,4 +60,7 @@ public:
     bool IsDead() { return Stat.Hp <= 0; }
     string GetName() const { return Name; }
     int GetHp() const { return Stat.Hp; }
+	int GetMaxHp() const { return Stat.MaxHp; }
+	int GetAtk() const { return Stat.Atk; }
+	int GetCritical() const { return Stat.Critical; }
 };
